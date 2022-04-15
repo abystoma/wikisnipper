@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useRef } from 'react';
 
-function App() {
+const App = () => {
+    
+    const [query, setQuery] = useState("");
+    const inputFieldRef = useRef();
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+  
+      // If input is empty return
+      if (typeof query !== "string" || query.trim() === "") return;
+
+      // Otherwise proceed and run search
+      inputFieldRef.current.blur();
+      setQuery("");
+    };
+  const handleInputChange = ({ target }) => setQuery(target.value);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div>
+    <h1>Wikisnipper</h1>
 
-export default App;
+      <form onSubmit={handleSubmit}>
+      <input            
+          value={query}
+          onChange={handleInputChange}
+          placeholder="Type to search..."
+          autoComplete="off"
+          ref={inputFieldRef}
+      />
+      <button type="submit">Search</button>
+    </form> 
+    </div>
+    
+ 
+  )
+}
+export default App
+
