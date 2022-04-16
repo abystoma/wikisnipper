@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { FaGithub } from "react-icons/fa";
 
+
 const Footer = () => {
   return (
     <div class = "FooterWrapper">
@@ -13,6 +14,24 @@ const Footer = () => {
         <FaGithub  size={40} color={`#2a2d2f`} aria-hidden="true" focusable="false" />
       </a>
     </div>
+  ); 
+};
+
+const Random = () => {
+  return (
+          <div class = "RandomArticleButton">
+            <a
+              href={"https://en.wikipedia.org/wiki/Special:Random"}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Random article"
+            >
+            Random Article{" "}
+            <span role="img" aria-hidden="true">
+            🔮
+            </span>
+            </a>
+          </div>
   ); 
 };
 
@@ -49,10 +68,15 @@ const App = () => {
               ref={inputFieldRef}
           />
           <button type="submit">Search</button>
+      
           </form> 
+          
         </div>
-        <Footer/>
+        <Random/>
+
     </body>
+    <Footer/>
+
     </div>   
  
   )

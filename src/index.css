@@ -94,3 +94,18 @@ input[type="search"]:focus {
   background: #ffffff;
   text-align: center; 
 }
+
+.RandomArticleButton {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px 12px;
+  margin: 20px auto auto auto;
+  max-width: 160px;
+  color: #ffffff;
+  border-bottom: 3px dashed #1183d6;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
