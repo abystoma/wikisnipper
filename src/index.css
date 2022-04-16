@@ -1,12 +1,30 @@
+
 h1 {
   color: rgb(231, 81, 12);
   font-style: bold;
-  /* font-family: sans-serif; */
+  font-family: Verdana;
+  font-size: 250%;
+	
+  ;
 
   text-align: center; 
 }
 
- 
+body {
+  background-color: #3E55A1;
+}
+
+.search-area {
+  background-color: rgb(255, 255, 255);
+  padding-top: 30px;
+  padding-bottom: 10px;
+  border-radius: 30px;
+  border-bottom: 12px solid rgb(71, 74, 81);;
+  max-width: 960px;
+  min-height: 145px;
+  margin: auto;
+
+}
 input {
   border-radius: 10px;
   padding: 10px 20px;
@@ -63,4 +81,16 @@ input[type="search"]:focus {
   box-shadow: 0 0 3px 0 #1183d6;
   border-color: #1183d6;
   outline: none;
+}
+
+.FooterWrapper {
+  padding-top: 8px;
+  position: absolute;
+  bottom: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  left: 0px;
+  right: 0px;
+  background: #ffffff;
+  text-align: center; 
 }
