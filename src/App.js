@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { FaGithub } from "react-icons/fa";
+import { CurrentSearch } from "./views";
 
 
 const Footer = () => {
@@ -34,52 +35,55 @@ const Random = () => {
           </div>
   ); 
 };
+const Search = () => {
+  const [query, setQuery] = useState("");
+  const inputFieldRef = useRef();
 
-const App = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // If input is empty return
+    if (typeof query !== "string" || query.trim() === "") return;
+
+    // Otherwise proceed and run search
+    inputFieldRef.current.blur();
+    setQuery("");
+  };
+const handleInputChange = ({ target }) => setQuery(target.value);
+
+return (
     
-    const [query, setQuery] = useState("");
-    const inputFieldRef = useRef();
-  
-    const handleSubmit = (event) => {
-      event.preventDefault();
-  
-      // If input is empty return
-      if (typeof query !== "string" || query.trim() === "") return;
+      <div>
+    <body>
 
-      // Otherwise proceed and run search
-      inputFieldRef.current.blur();
-      setQuery("");
-    };
-  const handleInputChange = ({ target }) => setQuery(target.value);
+        <h1>Wikisnipper</h1>
+      <div class = "search-area">
+        <form onSubmit={handleSubmit}>
+        <input            
+            value={query}
+            onChange={handleInputChange}
+            placeholder="Type to search..."
+            autoComplete="off"
+            ref={inputFieldRef}
+        />
+        <button type="submit">Search</button>
+    
+        </form> 
+        
+      </div>
+      <Random/>
 
-  return (
-      
-        <div>
-      <body>
+  </body>
+  <Footer/>
 
-          <h1>Wikisnipper</h1>
-        <div class = "search-area">
-          <form onSubmit={handleSubmit}>
-          <input            
-              value={query}
-              onChange={handleInputChange}
-              placeholder="Type to search..."
-              autoComplete="off"
-              ref={inputFieldRef}
-          />
-          <button type="submit">Search</button>
-      
-          </form> 
-          
-        </div>
-        <Random/>
-
-    </body>
-    <Footer/>
-
-    </div>   
- 
-  )
+  </div>   
+)
 }
-export default App
+const App = () => {
+  const [view, setView] = useState("currentSearch");
+  const [{ status, entries, error }, search, searchForMore] = useWikiSearch();
+
+
+}
+export default App;
 
