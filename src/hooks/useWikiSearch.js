@@ -1,7 +1,6 @@
 import { useCallback, useReducer } from "react";
 
 import api from "../lib/api";
-import { fetch, fetchMore, noResults, noMoreResults, fetchSuccess, fetchError, clearEntries } from "../utils/actions";
  
 // Reducer function for managing the WikiSearch state
 
@@ -70,6 +69,16 @@ const reducer = (state, action) => {
   }
 };
 
+const fetch = (query) => ({ type: "FETCH", payload: query });
+const fetchMore = () => ({ type: "FETCH_MORE" });
+const noResults = () => ({ type: "NO_RESULTS" });
+const noMoreResults = () => ({ type: "NO_MORE_RESULTS" });
+const fetchSuccess = (newEntries, newOffset) => ({
+  type: "FETCH_SUCCESS",
+  payload: { newEntries, newOffset },
+});
+const fetchError = () => ({ type: "FETCH_ERROR" });
+const clearEntries = () => ({ type: "CLEAR_ENTRIES" });
 
 
 // Custom hook

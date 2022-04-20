@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { FaGithub } from "react-icons/fa";
-import { CurrentSearch } from "./views";
+import  { CurrentSearch }  from "./views";
+import { useWikiSearch } from "./hooks";
 
 
 const Footer = () => {
@@ -56,7 +57,6 @@ return (
       <div>
     <body>
 
-        <h1>Wikisnipper</h1>
       <div class = "search-area">
         <form onSubmit={handleSubmit}>
         <input            
@@ -71,7 +71,6 @@ return (
         </form> 
         
       </div>
-      <Random/>
 
   </body>
   <Footer/>
@@ -83,7 +82,28 @@ const App = () => {
   const [view, setView] = useState("currentSearch");
   const [{ status, entries, error }, search, searchForMore] = useWikiSearch();
 
+  let content;
 
-}
+  if (view === "currentSearch") {
+    content = (
+      <CurrentSearch
+        entries={entries}
+        status={status}
+        error={error}
+        searchForMore={searchForMore}
+
+      />
+    );
+  }
+  return (
+    <>
+      <h1>Wikisnipper</h1>
+      <Search/>
+      <Random/>
+
+    </>
+  );
+};
+
 export default App;
 
