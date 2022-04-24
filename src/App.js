@@ -36,53 +36,50 @@ const Random = () => {
           </div>
   ); 
 };
-const Search = () => {
+
+const Search = ({ status, search, changeView }) => {
+
   const [query, setQuery] = useState("");
   const inputFieldRef = useRef();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     // If input is empty return
     if (typeof query !== "string" || query.trim() === "") return;
-
     // Otherwise proceed and run search
     inputFieldRef.current.blur();
+    changeView("currentSearch");
+    search(query);
     setQuery("");
   };
-const handleInputChange = ({ target }) => setQuery(target.value);
 
-return (
-    
+  const handleInputChange = ({ target }) => setQuery(target.value);
+
+  return (
       <div>
-    <body>
-
-      <div class = "search-area">
-        <form onSubmit={handleSubmit}>
-        <input            
-            value={query}
-            onChange={handleInputChange}
-            placeholder="Type to search..."
-            autoComplete="off"
-            ref={inputFieldRef}
-        />
-        <button type="submit">Search</button>
-    
-        </form> 
-        
-      </div>
-
-  </body>
-  <Footer/>
-
-  </div>   
-)
+        <body>
+          <div class = "search-area">
+            <form onSubmit={handleSubmit}>
+            <input            
+                value={query}
+                onChange={handleInputChange}
+                placeholder="Type to search..."
+                autoComplete="off"
+                ref={inputFieldRef}
+            />
+            <button type="submit">Search</button>
+            </form>  
+          </div>
+      </body>
+    </div>   
+  )
 }
 const App = () => {
-  const [view, setView] = useState("currentSearch");
+  const [view,  setView] = useState("currentSearch");
   const [{ status, entries, error }, search, searchForMore] = useWikiSearch();
 
   let content;
+  console.log(entries);
 
   if (view === "currentSearch") {
     content = (
@@ -91,19 +88,18 @@ const App = () => {
         status={status}
         error={error}
         searchForMore={searchForMore}
-
       />
     );
   }
   return (
     <>
       <h1>Wikisnipper</h1>
-      <Search/>
+      <Search status={status} search={search} changeView={setView} />
       <Random/>
-
+      {content}
+      <Footer/>
     </>
   );
 };
 
 export default App;
-

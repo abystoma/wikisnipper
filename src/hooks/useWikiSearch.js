@@ -1,7 +1,8 @@
 import { useCallback, useReducer } from "react";
 
 import api from "../lib/api";
- 
+import { mergeEntries } from "../utils/utils";
+
 // Reducer function for managing the WikiSearch state
 
 const initialState = {
@@ -48,6 +49,10 @@ const reducer = (state, action) => {
       return {
         ...state,
         status: "idle",
+        entries: mergeEntries({
+          currentEntries: state.entries,
+          newEntries: action.payload.newEntries,
+        }),
         currentOffset: action.payload.newOffset,
       };
 
@@ -93,6 +98,7 @@ function useWikiSearch() {
         try {
             //pass to search api
             const { data } = await api.searchWikipedia(query, offset);
+            console.log(data)
 
             if (data.query.search.length === 0) {
                 return dispatch(noResults());

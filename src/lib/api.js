@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const searchWiki = async(query,offset) => {
+const searchWikipedia = async(query,offset) => {
     const params = {
         action: "query",
         list: "search",
@@ -15,5 +15,5 @@ const searchWiki = async(query,offset) => {
 };
 
 export default {
-    searchWiki,
+  searchWikipedia,
 };
