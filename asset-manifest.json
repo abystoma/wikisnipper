@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/wikisnipper/static/css/main.f86548e8.css",
+    "main.js": "/wikisnipper/static/js/main.9fa7a350.js",
+    "index.html": "/wikisnipper/index.html",
+    "main.f86548e8.css.map": "/wikisnipper/static/css/main.f86548e8.css.map",
+    "main.9fa7a350.js.map": "/wikisnipper/static/js/main.9fa7a350.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f86548e8.css",
+    "static/js/main.9fa7a350.js"
+  ]
+}
