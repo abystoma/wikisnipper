@@ -1,6 +1,6 @@
 # Wikisnipper
 
-A webapp for viewing wikipedia articles using the wikipedia [Search Api](https://www.mediawiki.org/wiki/API:Search)\
+A webapp for viewing wikipedia articles using the wikipedia [Search Api](https://www.mediawiki.org/wiki/API:Search)
 
 ## Installation
 
